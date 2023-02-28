@@ -22,24 +22,24 @@ DB_PORT=5432
 ## Команды для запуска приложения в контейнерах:
 
 1) Скопируйте репозиторий.
-git clone <ссылка HTTPS/SSH>
+```git clone <ссылка HTTPS/SSH>```
 2) Перейдите в папку infra:
-cd  infra/
+```cd  infra/```
 3) Создайте файл с переменными окружения .env(Шаблон наполнения выше)
 4) Запускаем docker-compose:
-docker-compose up
+```docker-compose up```
 5) В контейнере web выполните миграции:
-docker-compose exec web python manage.py migrate
+```docker-compose exec web python manage.py migrate```
 6) Создатйте суперпользователя:
-docker-compose exec web python manage.py createsuperuser
+```docker-compose exec web python manage.py createsuperuser```
 Для пользователей windows 11:
-winpty docker-compose exec web python manage.py createsuperuser
+```winpty docker-compose exec web python manage.py createsuperuser```
 7) Соберите статику:
-docker-compose exec web python manage.py collectstatic --no-input
+```docker-compose exec web python manage.py collectstatic --no-input```
 
 ## Заполнение базы данных:
 Перейдите по ссылке http://localhost/admin/ , авторизуйтесь и заполните базу данных
 
-# Можно создать резервную копию базы данных:
+## Можно создать резервную копию базы данных:
 docker-compose exec web python manage.py dumpdata > fixtures.json 
 
